@@ -1,0 +1,362 @@
+/* ------------------- */
+/* 1. ROOT & VARIABLES */
+/* ------------------- */
+
+:root {
+  /* Colors */
+  --primary-color: hsl(210, 80%, 55%);
+  --primary-color-hover: hsl(210, 80%, 65%);
+  --text-color-light: hsl(210, 15%, 20%);
+  --text-color-dark: hsl(210, 15%, 85%);
+  --bg-light: hsl(0, 0%, 98%);
+  --bg-dark: hsl(220, 18%, 11%);
+  --card-bg-light: hsl(0, 0%, 100%);
+  --card-bg-dark: hsl(220, 18%, 15%);
+  --border-light: hsl(210, 15%, 90%);
+  --border-dark: hsl(220, 18%, 25%);
+  --shadow: 0 4px 12px hsla(220, 18%, 11%, 0.1);
+
+  /* Typography */
+  --font-family: "Inter", sans-serif;
+  --h2-size: 2.5rem;
+  --h3-size: 1.25rem;
+  --normal-font-size: 1rem;
+
+  /* Transitions & Borders */
+  --transition: all 0.3s ease-in-out;
+  --border-radius: 0.75rem;
+}
+
+/* ------------------- */
+/* 2. BASE & RESET    */
+/* ------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--normal-font-size);
+  background-color: var(--bg-light);
+  color: var(--text-color-light);
+  transition: var(--transition);
+}
+
+h2,
+h3 {
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ------------------- */
+/* 3. DARK MODE       */
+/* ------------------- */
+body.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-color-dark);
+}
+
+.dark-mode .header {
+  background-color: hsla(220, 18%, 11%, 0.8);
+}
+
+.dark-mode .nav__logo {
+  color: var(--text-color-dark);
+}
+
+.dark-mode .notes-container {
+  background-color: var(--card-bg-dark);
+  border: 1px solid var(--border-dark);
+}
+
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea {
+  background-color: hsl(220, 18%, 13%);
+  border-color: var(--border-dark);
+  color: var(--text-color-dark);
+}
+
+.dark-mode input::placeholder,
+.dark-mode textarea::placeholder {
+  color: hsl(210, 15%, 55%);
+}
+
+.dark-mode .note-card {
+  background-color: hsl(220, 18%, 18%);
+  border-color: hsl(220, 18%, 30%);
+}
+
+/* ------------------- */
+/* 4. REUSABLE CLASSES*/
+/* ------------------- */
+.container {
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 6rem 0 2rem;
+}
+
+.section__title {
+  font-size: var(--h2-size);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.section__subtitle {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--primary-color);
+}
+
+.button {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 0.9rem 2rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: var(--primary-color-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px hsla(210, 80%, 55%, 0.3);
+}
+
+.button-secondary {
+  background-color: transparent;
+  color: var(--text-color-light);
+  border: 1px solid var(--border-light);
+  padding: 0.9rem 2rem;
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.dark-mode .button-secondary {
+  color: var(--text-color-dark);
+  border-color: var(--border-dark);
+}
+
+.button-secondary:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+}
+
+/* ------------------- */
+/* 5. HEADER & NAV    */
+/* ------------------- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: hsla(0, 0%, 98%, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  border-bottom: 1px solid var(--border-light);
+  transition: var(--transition);
+}
+
+.dark-mode .header {
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.nav {
+  height: 4.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text-color-light);
+  transition: var(--transition);
+}
+.dark-mode .theme-toggle {
+  color: var(--text-color-dark);
+}
+
+.theme-toggle .fa-sun {
+  display: block;
+}
+.theme-toggle .fa-moon {
+  display: none;
+}
+.dark-mode .theme-toggle .fa-sun {
+  display: none;
+}
+.dark-mode .theme-toggle .fa-moon {
+  display: block;
+}
+
+/* ------------------- */
+/* 9. NOTES APP       */
+/* ------------------- */
+.notes-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: var(--card-bg-light);
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow);
+}
+
+.note-form-container {
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.9rem;
+  border: 1px solid var(--border-light);
+  border-radius: 0.5rem;
+  font-size: var(--normal-font-size);
+  font-family: var(--font-family);
+  background-color: var(--bg-light);
+  transition: var(--transition);
+}
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px hsla(210, 80%, 55%, 0.2);
+}
+
+.note-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.note-card {
+  background-color: hsl(210, 15%, 97%);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: var(--transition);
+}
+
+.note-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+
+.note-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  word-wrap: break-word;
+}
+
+.note-content {
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  word-wrap: break-word;
+  color: #555;
+}
+.dark-mode .note-content {
+  color: #ccc;
+}
+
+.note-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.note-actions button {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #777;
+  transition: var(--transition);
+}
+.dark-mode .note-actions button {
+  color: #bbb;
+}
+
+.note-actions button.edit-btn:hover {
+  color: var(--primary-color);
+}
+.note-actions button.delete-btn:hover {
+  color: hsl(0, 80%, 60%);
+}
+
+/* ------------------- */
+/* 11. FOOTER         */
+/* ------------------- */
+.footer {
+  padding: 3rem 0;
+  text-align: center;
+  border-top: 1px solid var(--border-light);
+  margin-top: 4rem;
+}
+.dark-mode .footer {
+  border-top: 1px solid var(--border-dark);
+}
+
+/* ------------------- */
+/* 13. RESPONSIVENESS */
+/* ------------------- */
+@media screen and (max-width: 768px) {
+  :root {
+    --h2-size: 1.75rem;
+  }
+  .section {
+    padding-top: 5rem;
+  }
+  .notes-container {
+    padding: 1.5rem;
+  }
+}

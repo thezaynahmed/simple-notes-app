@@ -1,0 +1,15 @@
+{
+  "name": "simple-notes-app",
+  "version": "1.0.0",
+  "description": "A simple, serverless CRUD Notes App using vanilla JS and localStorage.",
+  "main": "server.js",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.0"
+  }
+}
