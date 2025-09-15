@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A simple, serverless CRUD Notes App using vanilla JS and localStorage.",
   "main": "server.js",
+  "author": "Zain Ahmed",
   "engines": {
     "node": "22.x"
   },
